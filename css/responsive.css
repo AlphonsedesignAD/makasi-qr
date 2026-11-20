@@ -1,25 +1,152 @@
-@media (max-width:1000px){
- .hero{grid-template-columns:1fr;gap:40px;padding:36px 0 60px}
- .feat{grid-template-columns:1fr}.feat div{border-right:0;border-bottom:1px solid var(--line)}
- .gen,.cols,.safe{grid-template-columns:1fr}.pvbox{position:static;order:-1}.steps{grid-template-columns:1fr}.safe{padding:26px}
- .stats{grid-template-columns:repeat(2,1fr)}
-}
-@media (max-width:860px){
- .app{grid-template-columns:1fr}
- .side{position:fixed;inset:auto 0 0 0;height:auto;flex-direction:row;padding:8px;z-index:50;border-right:0;border-top:1px solid var(--line);justify-content:space-around}
- .side .logo,.side .me{display:none}
- .side a.nav{flex:1;justify-content:center}
- .side a.nav{flex-direction:column;gap:2px;font-size:11px;padding:8px 10px}
- .main{padding:22px 16px 90px}
- .head h1{font-size:26px}
-}
-@media (max-width:520px){.two{grid-template-columns:1fr}.stats{gap:10px}.stat .n{font-size:30px}.links .btn:not(.pri){display:none}}
+/* ============================================================
+   MAKASI QR — adaptation aux écrans
+   1024 → tablette | 860 → barre inférieure | 640 → téléphone
+   ============================================================ */
 
-@media (max-width:640px){
- .wrap{padding:0 16px}.hero h1{font-size:38px}.hero p.lead{font-size:17px}.cta .btn{width:100%}
- .tabs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px;margin-right:-8px;-webkit-overflow-scrolling:touch}.tab{flex:none}
- .qgrid{grid-template-columns:repeat(2,1fr);gap:12px}.qc .pv{min-height:140px}.card{padding:18px}
- .types{margin-top:-20px}.quick{grid-template-columns:repeat(2,1fr)}.hbar{grid-template-columns:80px 1fr 28px}
- nav.top{padding:14px 0}.live{padding:16px}
+@media (max-width:1024px){
+  .hero{grid-template-columns:1fr;gap:30px;padding:32px 0 44px}
+  .hero p.lead{max-width:60ch}
+  .feat{grid-template-columns:1fr}
+  .feat div{border-right:0;border-bottom:1px solid var(--line);padding:20px}
+  .feat div:last-child{border-bottom:0}
+  .gen,.cols,.safe{grid-template-columns:1fr}
+  .pvbox{position:static;order:-1}
+  .steps{grid-template-columns:1fr}
+  .safe{padding:22px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .qgrid{grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}
 }
-@media (max-width:380px){.qgrid{grid-template-columns:1fr}}
+
+/* ---------- barre de navigation inférieure ---------- */
+@media (max-width:860px){
+  .app{grid-template-columns:1fr}
+  .side{
+    position:fixed;inset:auto 0 0 0;height:auto;flex-direction:row;
+    padding:6px 8px calc(6px + env(safe-area-inset-bottom));
+    gap:2px;z-index:50;border-right:0;border-top:1px solid var(--line);
+    justify-content:space-around;background:#0A0517F2;backdrop-filter:blur(12px);
+  }
+  .side .logo,.side .me{display:none}
+  .side a.nav{
+    flex:1;flex-direction:column;justify-content:center;gap:3px;
+    font-size:10px;line-height:1.15;padding:7px 2px;white-space:nowrap;
+    border-radius:10px;letter-spacing:-.01em;
+  }
+  .side a.nav .ico{width:20px;height:20px}
+  .side a.nav.on{box-shadow:none}
+  .main{padding:18px 14px calc(76px + env(safe-area-inset-bottom))}
+  .main .foot{margin-top:24px;border-top:0}
+  .head h1{font-size:1.3rem}
+  .head{gap:10px}
+  .qgrid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+  .qc .pv{min-height:130px}
+  .bars{height:130px}
+  .hbar{grid-template-columns:80px 1fr 26px;font-size:12px}
+  #toasts{right:10px;bottom:calc(70px + env(safe-area-inset-bottom));left:10px;max-width:none}
+}
+
+/* ---------- téléphone ---------- */
+@media (max-width:640px){
+  body{font-size:14.5px}
+  .wrap{padding:0 15px}
+
+  nav.top{padding:12px 0;gap:8px}
+  .logo{font-size:15.5px;gap:8px}
+  .logo i{width:29px;height:29px;border-radius:8px}
+  .links .btn.pri{padding:8px 12px;font-size:12.5px}
+
+  .hero{padding:26px 0 34px;gap:24px}
+  .hero h1{font-size:clamp(1.75rem,8.4vw,2.2rem)}
+  .hero p.lead{font-size:.95rem;margin:14px 0 20px}
+  .cta .btn{flex:1 1 auto}
+  .live{padding:13px}
+  .live .frame{max-width:220px;padding:10px}
+
+  .feat{margin-bottom:36px}
+  .feat div{padding:16px 4px}
+  .feat .ico{width:20px;height:20px;margin-bottom:8px}
+  .feat h3{font-size:.95rem}
+  .feat p{font-size:.87rem}
+
+  .types{gap:6px;margin:-8px 0 34px}
+  .types span{padding:6px 10px;font-size:11.5px}
+  .types .ico{width:14px;height:14px}
+
+  .sec2{margin-bottom:36px}
+  .sec2>h2{margin-bottom:16px}
+  .band{padding:4px 0 40px}
+
+  .card{padding:15px;border-radius:12px}
+  .steps{gap:10px}
+  .steps div{padding:16px}
+  .steps div:before{width:26px;height:26px;font-size:12.5px;margin-bottom:10px}
+  .safe{padding:18px;gap:18px}
+  .safe ul{gap:8px}
+
+  details{padding:12px 0}
+  summary{font-size:14px}
+
+  .foot{font-size:12px;padding:16px 12px}
+
+  /* générateur */
+  .gen{gap:14px}
+  .pvbox{padding:12px}
+  .pvbox .frame{padding:10px}
+  .pvbox canvas{max-width:190px}
+  .tabs{
+    flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;
+    margin-right:-15px;padding-right:15px;
+    scrollbar-width:none;-webkit-overflow-scrolling:touch;
+    mask-image:linear-gradient(90deg,#000 92%,transparent);
+    -webkit-mask-image:linear-gradient(90deg,#000 92%,transparent);
+  }
+  .tabs::-webkit-scrollbar{display:none}
+  .two{grid-template-columns:1fr}
+  .sect{margin-top:16px}
+  .presets .pre{width:27px;height:27px}
+  input,select,textarea{font-size:14px;padding:9px 11px}
+  input[type=color]{height:32px;width:52px}
+
+  /* listes et stats */
+  .stats{gap:9px}
+  .stat{padding:13px}
+  .stat .n{font-size:1.6rem}
+  .stat span{font-size:11.5px}
+  .stat span .ico{width:14px;height:14px}
+  .qgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .qc{padding:11px}
+  .qc .pv{min-height:110px;padding:7px}
+  .qc h3{font-size:13px}
+  .qc small{font-size:11px}
+  .qc .row .btn{font-size:11.5px;padding:6px 8px}
+  .filters{grid-template-columns:1fr}
+  .quick{grid-template-columns:repeat(2,1fr);gap:8px}
+  .qk{padding:12px}
+  .qk b{font-size:13px}
+  .qk .ico{width:19px;height:19px}
+  .tip{padding:14px}
+  .tip .btn{margin-left:0;width:100%}
+  .tip p{font-size:12.5px}
+
+  .head{flex-direction:column;align-items:stretch}
+  .head .btn{width:100%}
+  .head h1{font-size:1.25rem}
+
+  .bar{margin-bottom:10px}
+  .pbtn{width:34px;height:34px}
+
+  .sheet{padding:18px;max-height:88vh}
+  .ah{font-size:1.15rem}
+}
+
+@media (max-width:400px){
+  .qgrid{grid-template-columns:1fr}
+  .hero h1{font-size:1.65rem}
+  .side a.nav{font-size:9.5px}
+  .side a.nav .ico{width:18px;height:18px}
+}
+
+/* pointeur grossier : pas d'effets de survol fantômes */
+@media (hover:none){
+  .btn.pri:hover,.qk:hover,.stat:hover,.steps div:hover,.types span:hover{transform:none}
+}

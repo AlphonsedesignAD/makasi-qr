@@ -61,7 +61,7 @@ function appShell(u) {
   w.innerHTML = `<aside class="side">${LOGO}${nav.map(([p, l, i]) => `<a class="nav ${d.page === p ? 'on' : ''}" href="${p}.html">${ico(i)}${l}</a>`).join('')}</aside><div class="main"><div class="bar">${profBtn(u)}</div></div>`;
   document.body.prepend(w); $('.main', w).append(main); $('.main', w).insertAdjacentHTML('beforeend', footer());
   if (!u && sb && ['dashboard', 'my-qrcodes'].includes(d.page)) {
-    main.insertAdjacentHTML('afterbegin', `<div class="card tip" style="margin-bottom:22px"><span data-ico="shield"></span><div><b>Vos QR codes sont sur cet appareil.</b><p>Créez un compte gratuit pour les retrouver partout et ne jamais les perdre.</p></div><button class="btn pri sm" id="gn" style="margin-left:auto">Créer un compte</button></div>`);
+    main.insertAdjacentHTML('afterbegin', `<div class="card tip" style="margin-bottom:22px"><span data-ico="shield"></span><div><b>Vos QR codes sont sur cet appareil.</b><p>Créez un compte gratuit pour les retrouver partout et ne jamais les perdre.</p></div><button class="btn pri sm" id="gn">Créer un compte</button></div>`);
     $('[data-ico]', main).outerHTML = ico('shield'); $('#gn').onclick = () => openAuth('register');
   }
 }
@@ -70,9 +70,27 @@ async function publicShell(u) {
   document.body.insertAdjacentHTML('beforeend', footer());
 }
 function home() {
-  const inp = $('#demoIn'); if (!inp || !window.MKC) return;
+  const inp = $('#demoIn'); if (!inp || typeof MKC === 'undefined') return;
   const q = MKC.make(inp.value, 260); q.append($('#demoQr'));
   inp.oninput = () => q.update({ data: inp.value || 'MAKASI QR' });
+}
+/* Révélation douce des sections au défilement (désactivée si mouvement réduit).
+   Basée sur un écouteur de défilement : résiste aux sauts de page et aux ancres. */
+function reveal() {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const els = $$('.sec2,.band,.feat>div,.types,.hero>*').filter(el => !el.classList.contains('rv'));
+  if (!els.length) return;
+  els.forEach(el => el.classList.add('rv'));
+  const check = () => {
+    const h = innerHeight;
+    els.forEach(el => { if (!el.classList.contains('in') && el.getBoundingClientRect().top < h - 30) el.classList.add('in'); });
+    if (els.every(el => el.classList.contains('in'))) {
+      removeEventListener('scroll', check); removeEventListener('resize', check);
+    }
+  };
+  addEventListener('scroll', check, { passive: true });
+  addEventListener('resize', check);
+  check();
 }
 async function init() {
   const d = document.body.dataset, u = await store.user();
@@ -81,6 +99,7 @@ async function init() {
   bindProfile(u);
   if (u) { const n = await store.importGuest(); if (n) toast(`${n} QR code(s) créés sans compte ont été ajoutés à votre compte.`); }
   if (d.page === 'home') home();
+  reveal();
   document.dispatchEvent(new Event('mk-ready'));
 }
 document.addEventListener('DOMContentLoaded', init);
