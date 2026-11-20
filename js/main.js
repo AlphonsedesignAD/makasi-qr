@@ -18,13 +18,33 @@ const IC = {
  shield:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>',
  bolt:'<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>',
  plus:'<path d="M12 5v14M5 12h14"/>',
- save:'<path d="M5 3h11l3 3v15H5zM8 3v5h7V3M8 21v-7h8v7"/>'
+ save:'<path d="M5 3h11l3 3v15H5zM8 3v5h7V3M8 21v-7h8v7"/>',
+ sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>',
+ moon:'<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>'
 };
 const ico = n => `<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">${IC[n] || ''}</svg>`;
 const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const slug = s => (s || 'qr').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'qr';
 const TL = { url: 'Lien', text: 'Texte', wifi: 'Wi-Fi', vcard: 'Contact', email: 'E-mail', whatsapp: 'WhatsApp', sms: 'SMS' };
+const THEME_KEY = 'mk-theme';
+const getTheme = () => document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
+function syncThemeToggle() {
+  const t = getTheme();
+  $$('[data-theme-toggle]').forEach(b => {
+    const light = t === 'light';
+    b.innerHTML = ico(light ? 'moon' : 'sun') + (b.dataset.label ? `<span>${light ? 'Sombre' : 'Clair'}</span>` : '');
+    b.setAttribute('aria-label', light ? 'Passer en mode sombre' : 'Passer en mode clair');
+    b.title = light ? 'Mode sombre' : 'Mode clair';
+  });
+}
+function applyTheme(t) {
+  if (t === 'light') document.documentElement.dataset.theme = 'light';
+  else delete document.documentElement.dataset.theme;
+  try { localStorage.setItem(THEME_KEY, t); } catch (e) {}
+  syncThemeToggle();
+}
+function toggleTheme() { applyTheme(getTheme() === 'light' ? 'dark' : 'light'); }
 
 function toast(m, t = 'ok') {
   let box = $('#toasts'); if (!box) { box = document.createElement('div'); box.id = 'toasts'; document.body.append(box); }
@@ -54,11 +74,15 @@ function bindProfile(u) {
   };
   document.addEventListener('click', e => { if (!e.target.closest('.pwrap')) $('.pmenu')?.remove(); });
 }
+function bindTheme() {
+  $$('[data-theme-toggle]').forEach(b => b.onclick = toggleTheme);
+  syncThemeToggle();
+}
 function appShell(u) {
   const d = document.body.dataset, main = $('main');
   const nav = [['dashboard', 'Tableau de bord', 'grid'], ['generator', 'Générateur', 'qr'], ['my-qrcodes', 'Mes QR codes', 'library'], ['statistics', 'Statistiques', 'chart']];
   const w = document.createElement('div'); w.className = 'app';
-  w.innerHTML = `<aside class="side">${LOGO}${nav.map(([p, l, i]) => `<a class="nav ${d.page === p ? 'on' : ''}" href="${p}.html">${ico(i)}${l}</a>`).join('')}</aside><div class="main"><div class="bar">${profBtn(u)}</div></div>`;
+  w.innerHTML = `<aside class="side">${LOGO}${nav.map(([p, l, i]) => `<a class="nav ${d.page === p ? 'on' : ''}" href="${p}.html">${ico(i)}${l}</a>`).join('')}<button class="nav theme-toggle" data-theme-toggle data-label="1" type="button">${ico(getTheme() === 'light' ? 'moon' : 'sun')}<span>${getTheme() === 'light' ? 'Sombre' : 'Clair'}</span></button></aside><div class="main"><div class="bar">${profBtn(u)}</div></div>`;
   document.body.prepend(w); $('.main', w).append(main); $('.main', w).insertAdjacentHTML('beforeend', footer());
   if (!u && sb && ['dashboard', 'my-qrcodes'].includes(d.page)) {
     main.insertAdjacentHTML('afterbegin', `<div class="card tip" style="margin-bottom:22px"><span data-ico="shield"></span><div><b>Vos QR codes sont sur cet appareil.</b><p>Créez un compte gratuit pour les retrouver partout et ne jamais les perdre.</p></div><button class="btn pri sm" id="gn">Créer un compte</button></div>`);
@@ -66,7 +90,7 @@ function appShell(u) {
   }
 }
 async function publicShell(u) {
-  document.body.insertAdjacentHTML('afterbegin', `<div class="wrap"><nav class="top">${LOGO}<div class="links"><a class="btn pri sm" href="generator.html">Ouvrir le générateur</a>${profBtn(u)}</div></nav></div>`);
+  document.body.insertAdjacentHTML('afterbegin', `<div class="wrap"><nav class="top">${LOGO}<div class="links"><a class="btn pri sm" href="generator.html">Ouvrir le générateur</a><button class="btn sm theme-toggle" data-theme-toggle type="button" aria-label="Changer de thème">${ico(getTheme() === 'light' ? 'moon' : 'sun')}</button>${profBtn(u)}</div></nav></div>`);
   document.body.insertAdjacentHTML('beforeend', footer());
 }
 function home() {
@@ -97,6 +121,7 @@ async function init() {
   $$('[data-ico]').forEach(e => e.outerHTML = ico(e.dataset.ico));
   if (d.app !== undefined) appShell(u); else await publicShell(u);
   bindProfile(u);
+  bindTheme();
   if (u) { const n = await store.importGuest(); if (n) toast(`${n} QR code(s) créés sans compte ont été ajoutés à votre compte.`); }
   if (d.page === 'home') home();
   reveal();
