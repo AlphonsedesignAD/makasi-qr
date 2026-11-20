@@ -53,7 +53,8 @@
   nav.top{padding:12px 0;gap:8px}
   .logo{font-size:15px;gap:8px}
   .logo i{width:28px;height:28px;border-radius:8px}
-  .links .btn.pri{padding:7px 11px;font-size:12px}
+  .links{gap:6px}
+  .links .btn.pri{display:none}
 
   .hero{padding:26px 0 34px;gap:24px}
   .hero h1{font-size:clamp(1.4rem,6.5vw,1.8rem)}

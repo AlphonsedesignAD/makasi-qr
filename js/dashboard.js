@@ -22,7 +22,7 @@ const pages = {
     $('#stats').innerHTML = S.map(([i, n, l]) => `<div class="card stat"><span>${ico(i)}${l}</span><div class="n">${n}</div></div>`).join('');
     cards($('#recent'), L.slice(0, 4));
     $('#quick').innerHTML = Object.entries(TL).map(([k, v]) => `<a class="qk" href="generator.html?type=${k}">${ico({ url: 'link', text: 'text', wifi: 'wifi', vcard: 'user', email: 'mail', whatsapp: 'chat', sms: 'phone' }[k])}<b>${v}</b></a>`).join('');
-    store.user().then(u => $('#hello').textContent = u ? 'Bonjour ' + u.name.split(' ')[0] + ' 👋' : 'Bienvenue 👋');
+    store.user().then(u => $('#hello').textContent = u ? 'Bonjour ' + u.name.split(' ')[0] : 'Bienvenue');
   },
   'my-qrcodes'(L) {
     const go = () => { const t = $('#search').value.toLowerCase(), k = $('#ftype').value; cards($('#list'), L.filter(q => q.name.toLowerCase().includes(t) && (!k || q.type === k))); };
