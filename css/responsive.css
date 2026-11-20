@@ -36,7 +36,7 @@
   .side a.nav.on{box-shadow:none}
   .main{padding:18px 14px calc(76px + env(safe-area-inset-bottom))}
   .main .foot{margin-top:24px;border-top:0}
-  .head h1{font-size:1.2rem}
+  .head h1{font-size:1.1rem}
   .head{gap:10px}
   .qgrid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
   .qc .pv{min-height:130px}
@@ -47,17 +47,17 @@
 
 /* ---------- téléphone ---------- */
 @media (max-width:640px){
-  body{font-size:14px}
+  body{font-size:13.5px}
   .wrap{padding:0 15px}
 
   nav.top{padding:12px 0;gap:8px}
-  .logo{font-size:15.5px;gap:8px}
-  .logo i{width:29px;height:29px;border-radius:8px}
-  .links .btn.pri{padding:8px 12px;font-size:12.5px}
+  .logo{font-size:15px;gap:8px}
+  .logo i{width:28px;height:28px;border-radius:8px}
+  .links .btn.pri{padding:7px 11px;font-size:12px}
 
   .hero{padding:26px 0 34px;gap:24px}
-  .hero h1{font-size:clamp(1.55rem,7.2vw,2rem)}
-  .hero p.lead{font-size:.95rem;margin:14px 0 20px}
+  .hero h1{font-size:clamp(1.4rem,6.5vw,1.8rem)}
+  .hero p.lead{font-size:.9rem;margin:12px 0 18px}
   .cta .btn{flex:1 1 auto}
   .live{padding:13px}
   .live .frame{max-width:220px;padding:10px}
@@ -76,7 +76,7 @@
   .sec2>h2{margin-bottom:16px}
   .band{padding:4px 0 40px}
 
-  .card{padding:14px;border-radius:12px}
+  .card{padding:13px;border-radius:12px}
   .steps{gap:10px}
   .steps div{padding:16px}
   .steps div:before{width:26px;height:26px;font-size:12.5px;margin-bottom:10px}
@@ -104,13 +104,13 @@
   .two{grid-template-columns:1fr}
   .sect{margin-top:16px}
   .presets .pre{width:27px;height:27px}
-  input,select,textarea{font-size:14px;padding:9px 11px}
-  input[type=color]{height:32px;width:52px}
+  input,select,textarea{font-size:13.5px;padding:8px 10px}
+  input[type=color]{height:30px;width:48px}
 
   /* listes et stats */
   .stats{gap:9px}
   .stat{padding:13px}
-  .stat .n{font-size:1.45rem}
+  .stat .n{font-size:1.3rem}
   .stat span{font-size:11.5px}
   .stat span .ico{width:14px;height:14px}
   .qgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
@@ -130,7 +130,7 @@
 
   .head{flex-direction:column;align-items:stretch}
   .head .btn{width:100%}
-  .head h1{font-size:1.1rem}
+  .head h1{font-size:1.05rem}
 
   .bar{margin-bottom:10px}
   .pbtn{width:34px;height:34px}
@@ -141,7 +141,7 @@
 
 @media (max-width:400px){
   .qgrid{grid-template-columns:1fr}
-  .hero h1{font-size:1.5rem}
+  .hero h1{font-size:1.35rem}
   .side a.nav{font-size:9.5px}
   .side a.nav .ico{width:18px;height:18px}
 }

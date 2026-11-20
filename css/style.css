@@ -26,7 +26,7 @@
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{
-  font:400 14.5px/1.6 'DM Sans',system-ui,sans-serif;
+  font:400 14px/1.55 'DM Sans',system-ui,sans-serif;
   background:var(--ink);color:var(--tx);min-height:100vh;
   overflow-x:hidden;
   background-image:
