@@ -9,7 +9,7 @@
   .feat{grid-template-columns:1fr}
   .feat div{border-right:0;border-bottom:1px solid var(--line);padding:20px}
   .feat div:last-child{border-bottom:0}
-  .gen,.cols,.safe{grid-template-columns:1fr}
+  .gen,.cols,.safe{grid-template-columns:minmax(0,1fr)}
   .pvbox{position:static;order:-1}
   .steps{grid-template-columns:1fr}
   .safe{padding:22px}
