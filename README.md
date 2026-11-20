@@ -4,7 +4,7 @@
 
 Site statique (HTML/CSS/JS) : déployez le dossier tel quel sur Vercel ou Netlify.
 
-🔗 Dépôt : <https://github.com/AlphonseDesign/makasi-qr>
+🔗 Dépôt : <https://github.com/AlphonsedesignAD/makasi-qr>
 
 > 🔐 **Sécurité** : les clés privées ne sont jamais publiées. La clé `sb_publishable_…`
 > présente dans `js/supabase.js` est publique **par conception** et protégée par la
