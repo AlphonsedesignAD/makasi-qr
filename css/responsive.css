@@ -36,7 +36,7 @@
   .side a.nav.on{box-shadow:none}
   .main{padding:18px 14px calc(76px + env(safe-area-inset-bottom))}
   .main .foot{margin-top:24px;border-top:0}
-  .head h1{font-size:1.3rem}
+  .head h1{font-size:1.2rem}
   .head{gap:10px}
   .qgrid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
   .qc .pv{min-height:130px}
@@ -47,7 +47,7 @@
 
 /* ---------- téléphone ---------- */
 @media (max-width:640px){
-  body{font-size:14.5px}
+  body{font-size:14px}
   .wrap{padding:0 15px}
 
   nav.top{padding:12px 0;gap:8px}
@@ -56,7 +56,7 @@
   .links .btn.pri{padding:8px 12px;font-size:12.5px}
 
   .hero{padding:26px 0 34px;gap:24px}
-  .hero h1{font-size:clamp(1.75rem,8.4vw,2.2rem)}
+  .hero h1{font-size:clamp(1.55rem,7.2vw,2rem)}
   .hero p.lead{font-size:.95rem;margin:14px 0 20px}
   .cta .btn{flex:1 1 auto}
   .live{padding:13px}
@@ -76,7 +76,7 @@
   .sec2>h2{margin-bottom:16px}
   .band{padding:4px 0 40px}
 
-  .card{padding:15px;border-radius:12px}
+  .card{padding:14px;border-radius:12px}
   .steps{gap:10px}
   .steps div{padding:16px}
   .steps div:before{width:26px;height:26px;font-size:12.5px;margin-bottom:10px}
@@ -110,7 +110,7 @@
   /* listes et stats */
   .stats{gap:9px}
   .stat{padding:13px}
-  .stat .n{font-size:1.6rem}
+  .stat .n{font-size:1.45rem}
   .stat span{font-size:11.5px}
   .stat span .ico{width:14px;height:14px}
   .qgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
@@ -130,7 +130,7 @@
 
   .head{flex-direction:column;align-items:stretch}
   .head .btn{width:100%}
-  .head h1{font-size:1.25rem}
+  .head h1{font-size:1.1rem}
 
   .bar{margin-bottom:10px}
   .pbtn{width:34px;height:34px}
@@ -141,7 +141,7 @@
 
 @media (max-width:400px){
   .qgrid{grid-template-columns:1fr}
-  .hero h1{font-size:1.65rem}
+  .hero h1{font-size:1.5rem}
   .side a.nav{font-size:9.5px}
   .side a.nav .ico{width:18px;height:18px}
 }

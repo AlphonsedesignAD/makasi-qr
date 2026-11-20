@@ -26,7 +26,7 @@
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{
-  font:400 15px/1.6 'DM Sans',system-ui,sans-serif;
+  font:400 14.5px/1.6 'DM Sans',system-ui,sans-serif;
   background:var(--ink);color:var(--tx);min-height:100vh;
   overflow-x:hidden;
   background-image:
@@ -89,8 +89,8 @@ nav.top{display:flex;align-items:center;justify-content:space-between;gap:12px;p
 
 /* ---------- héros ---------- */
 .hero{display:grid;grid-template-columns:1.08fr .92fr;gap:44px;align-items:center;padding:44px 0 60px}
-.hero h1{font-size:clamp(2rem,5.6vw,3.7rem);font-weight:800;line-height:1.05}
-.hero p.lead{color:var(--mut);font-size:clamp(.95rem,2.1vw,1.08rem);margin:18px 0 24px;max-width:46ch}
+.hero h1{font-size:clamp(1.8rem,5vw,3.3rem);font-weight:800;line-height:1.05}
+.hero p.lead{color:var(--mut);font-size:clamp(.9rem,2vw,1.02rem);margin:18px 0 24px;max-width:46ch}
 .cta{display:flex;gap:10px;flex-wrap:wrap}
 
 /* ---------- cartes ---------- */
@@ -124,9 +124,9 @@ nav.top{display:flex;align-items:center;justify-content:space-between;gap:12px;p
 
 /* ---------- sections ---------- */
 .band{text-align:center;padding:10px 0 60px}
-.band h2{font-size:clamp(1.4rem,3.4vw,2.3rem);margin-bottom:18px}
+.band h2{font-size:clamp(1.25rem,3vw,2rem);margin-bottom:18px}
 .sec2{margin-bottom:56px}
-.sec2>h2{font-size:clamp(1.35rem,3.2vw,2.1rem);margin-bottom:20px;max-width:22ch}
+.sec2>h2{font-size:clamp(1.2rem,2.8vw,1.85rem);margin-bottom:20px;max-width:22ch}
 
 /* ---------- formulaires ---------- */
 .fld{margin-bottom:12px}
