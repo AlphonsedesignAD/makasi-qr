@@ -1,0 +1,56 @@
+.app{display:grid;grid-template-columns:256px 1fr;min-height:100vh}
+.side{position:sticky;top:0;height:100vh;padding:22px 16px;background:#0c071d;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+.side .logo{margin:0 8px 22px}
+.side a.nav{display:flex;gap:12px;align-items:center;padding:11px 12px;border-radius:10px;color:var(--mut);text-decoration:none;font-weight:600}
+.side a.nav:hover{color:var(--tx);background:var(--panel)}
+.side a.nav.on{color:#1a1200;background:var(--gold)}
+.side .me{margin-top:auto;padding:12px;border:1px solid var(--line);border-radius:12px;font-size:14px;color:var(--mut)}
+.side .me b{display:block;color:var(--tx);overflow:hidden;text-overflow:ellipsis}
+.main{padding:32px 36px 0;min-width:0;display:flex;flex-direction:column}
+.main>#view{flex:1}
+.head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+.head h1{font-size:34px}
+.head p{color:var(--mut)}
+.h2{font-size:22px;margin:30px 0 16px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.stat .n{font:800 40px Sora,sans-serif;line-height:1.2}
+.stat span{color:var(--mut);display:flex;gap:8px;align-items:center;font-size:14px}
+.qgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}
+.qc{display:flex;flex-direction:column;gap:12px}
+.qc .pv{background:#fff;border-radius:10px;display:grid;place-items:center;padding:10px;min-height:190px}
+.qc .pv canvas{max-width:100%;height:auto}
+.qc h3{font-size:16px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.qc small{color:var(--mut)}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.empty{text-align:center;padding:48px 24px;grid-column:1/-1}
+.empty .ico{width:34px;height:34px;color:var(--gold);margin-bottom:10px}
+.empty p{color:var(--mut);margin:6px 0 18px}
+.bars{display:flex;align-items:end;gap:8px;height:190px}
+.bars div{flex:1;display:flex;flex-direction:column;justify-content:end;align-items:center;gap:6px;height:100%;font-size:12px;color:var(--mut)}
+.bars i{width:100%;border-radius:6px 6px 0 0;background:linear-gradient(var(--gold),var(--vio));min-height:3px}
+.hbar{display:grid;grid-template-columns:110px 1fr 36px;gap:12px;align-items:center;margin:12px 0}
+.hbar i{display:block;height:10px;border-radius:99px;background:linear-gradient(90deg,var(--vio),var(--gold))}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cols{display:grid;grid-template-columns:1.4fr 1fr;gap:18px}
+.note{color:var(--mut);font-size:14px;margin-top:14px}
+.gen{display:grid;grid-template-columns:1fr 370px;gap:24px;align-items:start}
+.pvbox{position:sticky;top:24px;text-align:center}
+.pvbox .frame{background:#fff;border-radius:14px;padding:14px;display:grid;place-items:center;margin-bottom:16px}
+.pvbox canvas{max-width:100%;height:auto}
+.pvbox .row{justify-content:center}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.tab{display:inline-flex;gap:8px;align-items:center;padding:9px 14px;border-radius:10px;border:1px solid var(--line);background:var(--ink);color:var(--mut);font:600 14px 'DM Sans',sans-serif;cursor:pointer}
+.tab:hover{color:var(--tx)}
+.tab.on{background:var(--gold);color:#1a1200;border-color:var(--gold)}
+.sect{font-size:17px;margin:26px 0 14px;padding-top:20px;border-top:1px solid var(--line)}
+.chk{display:flex;gap:10px;align-items:center;margin-bottom:12px;cursor:pointer}
+.chk input{width:auto;accent-color:var(--gold)}
+.presets{display:flex;gap:10px;margin:6px 0 10px}
+.pre{width:38px;height:38px;border-radius:50%;border:2px solid var(--line);cursor:pointer}
+.pre:hover{border-color:var(--gold)}
+.hint{color:var(--mut);font-size:13px;margin-bottom:14px}
+
+.quick{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px}
+.qk{display:flex;flex-direction:column;gap:10px;padding:18px;border-radius:var(--r);border:1px solid var(--line);background:var(--panel);text-decoration:none;transition:.2s}
+.qk:hover{border-color:var(--gold);transform:translateY(-2px)}.qk .ico{width:26px;height:26px;color:var(--gold)}
+.tip{display:flex;gap:14px;margin-top:24px;align-items:flex-start}.tip .ico{color:var(--ok);margin-top:3px}.tip p{color:var(--mut)}
