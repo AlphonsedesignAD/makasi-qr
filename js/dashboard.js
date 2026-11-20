@@ -41,6 +41,9 @@ const pages = {
   }
 };
 document.addEventListener('mk-ready', async () => {
-  let L = []; try { L = await store.list(); } catch (e) { toast('Chargement impossible : ' + e.message, 'bad'); }
+  let L = []; try { L = await store.list(); } catch (e) {
+    const perm = /permission denied|does not exist|relation .* does not exist/i.test(e.message);
+    toast(perm ? 'Base non configurée : exécutez supabase.sql dans Supabase (GRANT + RLS).' : 'Chargement impossible : ' + e.message, 'bad');
+  }
   pages[document.body.dataset.page]?.(L);
 });
